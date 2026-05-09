@@ -1,1 +1,199 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   BTG Pactual Inspired Theme
+   Compatible with Angular, React, Tailwind, Material UI
+   ========================================================= */
+
+:root {
+
+  /* ===== Primary Brand Colors ===== */
+  --btg-primary: #001E62;
+  --btg-primary-light: #0A1E8C;
+  --btg-secondary: #195AB4;
+  --btg-accent: #418FDE;
+
+  /* ===== Neutral Colors ===== */
+  --btg-background: #F5F7FA;
+  --btg-surface: #FFFFFF;
+  --btg-border: #D9E2F2;
+
+  /* ===== Text Colors ===== */
+  --btg-text-primary: #0B1220;
+  --btg-text-secondary: #4B5563;
+  --btg-text-light: #FFFFFF;
+
+  /* ===== Status Colors ===== */
+  --btg-success: #16A34A;
+  --btg-warning: #F59E0B;
+  --btg-danger: #DC2626;
+  --btg-info: #0284C7;
+
+  /* ===== Shadows ===== */
+  --btg-shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --btg-shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --btg-shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+
+  /* ===== Border Radius ===== */
+  --btg-radius-sm: 8px;
+  --btg-radius-md: 14px;
+  --btg-radius-lg: 24px;
+
+  /* ===== Typography ===== */
+  --btg-font-family: "Inter", "Roboto", sans-serif;
+
+  /* ===== Layout ===== */
+  --btg-container-width: 1280px;
+}
+
+/* =========================================================
+   Global Styles
+   ========================================================= */
+
+body {
+  margin: 0;
+  font-family: var(--btg-font-family);
+  background: var(--btg-background);
+  color: var(--btg-text-primary);
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+.btn-primary {
+  background: var(--btg-primary);
+  color: var(--btg-text-light);
+  border: none;
+  padding: 12px 20px;
+  border-radius: var(--btg-radius-md);
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: var(--btg-shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--btg-primary-light);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--btg-surface);
+  color: var(--btg-primary);
+  border: 1px solid var(--btg-border);
+  padding: 12px 20px;
+  border-radius: var(--btg-radius-md);
+  cursor: pointer;
+}
+
+/* =========================================================
+   Cards
+   ========================================================= */
+
+.card {
+  background: var(--btg-surface);
+  border-radius: var(--btg-radius-lg);
+  padding: 24px;
+  box-shadow: var(--btg-shadow-md);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* =========================================================
+   Inputs
+   ========================================================= */
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--btg-radius-sm);
+  border: 1px solid var(--btg-border);
+  background: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--btg-secondary);
+  box-shadow: 0 0 0 4px rgba(25, 90, 180, 0.15);
+}
+
+/* =========================================================
+   Navbar
+   ========================================================= */
+
+.navbar {
+  height: 72px;
+  background: var(--btg-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  box-shadow: var(--btg-shadow-md);
+}
+
+/* =========================================================
+   Dashboard Widgets
+   ========================================================= */
+
+.dashboard-widget {
+  background: linear-gradient(
+    135deg,
+    var(--btg-primary),
+    var(--btg-secondary)
+  );
+
+  color: white;
+  padding: 24px;
+  border-radius: var(--btg-radius-lg);
+  box-shadow: var(--btg-shadow-lg);
+}
+
+/* =========================================================
+   Tables
+   ========================================================= */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: var(--btg-radius-md);
+  overflow: hidden;
+}
+
+.table th {
+  background: var(--btg-primary);
+  color: white;
+  text-align: left;
+  padding: 14px;
+}
+
+.table td {
+  padding: 14px;
+  border-bottom: 1px solid #EEF2F7;
+}
+
+/* =========================================================
+   Tags / Badges
+   ========================================================= */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-success {
+  background: rgba(22,163,74,0.12);
+  color: var(--btg-success);
+}
+
+.badge-warning {
+  background: rgba(245,158,11,0.12);
+  color: var(--btg-warning);
+}
+
+.badge-danger {
+  background: rgba(220,38,38,0.12);
+  color: var(--btg-danger);
+}
