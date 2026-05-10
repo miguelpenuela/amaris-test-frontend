@@ -1,1 +1,8 @@
-<p>navigation-menu works!</p>
+<div class="navigation-menu-internal-container">
+    @for(menu of navigationButtons; track menu.label) {
+        <a class="menu-option" [routerLink]="menu.navigationPath">
+            <i [class]="menu.icon"></i>
+            <label>{{menu.label}}</label>
+        </a>
+    }
+</div>

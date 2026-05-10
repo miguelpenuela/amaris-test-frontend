@@ -73,6 +73,10 @@ body {
   box-shadow: var(--btg-shadow-sm);
 }
 
+.btn-primary > i {
+  color: var(--btg-text-light);
+}
+
 .btn-primary:hover {
   background: var(--btg-primary-light);
   transform: translateY(-1px);

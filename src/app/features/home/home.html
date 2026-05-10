@@ -1,1 +1,15 @@
-<p>home works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <app-balance-card></app-balance-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p class="title">Active Portfolio</p>
+            @for (reg of registrations; track $index) {
+                <app-product-subscribed-card></app-product-subscribed-card>
+            }
+        </div>
+    </div>
+</div>
