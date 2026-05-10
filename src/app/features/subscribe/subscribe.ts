@@ -5,6 +5,7 @@ import { Storage } from '../../core/services/storage';
 import { storageKeysEnum } from '../../core/utils/storageKeys';
 import { Customer } from '../../core/interfaces/db/Customer.interface';
 import { CurrencyPipe } from '@angular/common';
+import { customerInfoMock } from '../../core/mocks/customer-info.mock';
 
 @Component({
   selector: 'app-subscribe',
@@ -24,6 +25,7 @@ export class Subscribe implements OnInit {
 
   ngOnInit(): void {
     this.getSelectedProduct();
+    this.getCustomerInfo();
   }
 
   getSelectedProduct() {
@@ -38,6 +40,7 @@ export class Subscribe implements OnInit {
     if (value) {
       this.customer = JSON.parse(value);
     }
+    this.customer = customerInfoMock.customer_info;
   }
 
 }

@@ -13,5 +13,17 @@
         font-size: 12pt;
         text-align: left;
         padding: 10px;
+
+        &__current-balance {
+            font-size: 18pt;
+            font-weight: normal;
+            color: var(--btg-accent);
+        } 
     }
+}
+
+.subscription-message {
+    background-color: var(--btg-border);
+    padding: 10px;
+    border-radius: var(--btg-radius-md);
 }
