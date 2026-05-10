@@ -1,1 +1,60 @@
-<p>register works!</p>
+<div class="container main-container">
+    <div class="row main-subcontainer justify-content-center">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="login-container">
+                <label class="title">Create Account</label>
+                <p>Start your journey today.</p>
+                <br/>
+                <div class="form-field">
+                    <label>Name</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Miguel Felipe" >
+                    </div>
+                </div>
+                
+                <div class="form-field">
+                    <label>Surname</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Penuela Garzon">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label>Email Address</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-at"></i></span>
+                        <input type="text" class="form-control" placeholder="felpegarxon@mail.com">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label>Password</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                        <input type="text" class="form-control" placeholder="**********">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label>Confirm Password</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-shield"></i></span>
+                        <input type="text" class="form-control" placeholder="**********">
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <input type="checkbox" style="width: 20px;height: 20px;"/> I agree to the <strong>Terms of service</strong> and <strong>Privacy Policy</strong>
+                </div>
+
+                <button class="btn btn-primary mb-2">
+                    Create Account <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <hr/>
+                <span>Already have an account? <a [routerLink]="'/login'">Log In</a></span>
+            </div>
+        </div>
+    </div>
+</div>

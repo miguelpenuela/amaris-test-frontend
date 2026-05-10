@@ -15,11 +15,13 @@
   --btg-background: #F5F7FA;
   --btg-surface: #FFFFFF;
   --btg-border: #D9E2F2;
+  --btg-background-white: #FFFFFF;
 
   /* ===== Text Colors ===== */
   --btg-text-primary: #0B1220;
   --btg-text-secondary: #4B5563;
   --btg-text-light: #FFFFFF;
+  --btg-text-main: #646363;
 
   /* ===== Status Colors ===== */
   --btg-success: #16A34A;
@@ -38,7 +40,7 @@
   --btg-radius-lg: 24px;
 
   /* ===== Typography ===== */
-  --btg-font-family: "Inter", "Roboto", sans-serif;
+  --btg-font-family: "Roboto", sans-serif;
 
   /* ===== Layout ===== */
   --btg-container-width: 1280px;
@@ -52,7 +54,8 @@ body {
   margin: 0;
   font-family: var(--btg-font-family);
   background: var(--btg-background);
-  color: var(--btg-text-primary);
+  color: var(--btg-text-main);
+  font-size: 12pt;
 }
 
 /* =========================================================
@@ -196,4 +199,25 @@ body {
 .badge-danger {
   background: rgba(220,38,38,0.12);
   color: var(--btg-danger);
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+i {
+  color: var(--btg-primary-light)
+}
+
+.title {
+  font-family: "Nunito", sans-serif;
+  font-size: 20pt;
+  font-weight: bold;
+  color: var(--btg-primary);
+}
+
+.form-field {
+  text-align: left;
+  margin-bottom: 20px;
 }

@@ -10,6 +10,10 @@ import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
     {
+        path: "",
+        component: Login
+    },
+    {
         path: "login",
         component: Login
     },
