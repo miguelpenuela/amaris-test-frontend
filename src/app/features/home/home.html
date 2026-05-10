@@ -6,10 +6,8 @@
 <div class="row">
     <div class="col-12">
         <p class="title">Active Portfolio</p>
-        @if (registrations) {
-            @for (reg of registrations; track $index) {
-                <app-product-subscribed-card [registration]="reg"></app-product-subscribed-card>
-            }
+        @for (reg of registrations(); track $index) {
+            <app-product-subscribed-card [registration]="reg"></app-product-subscribed-card>
         }
     </div>
 </div>

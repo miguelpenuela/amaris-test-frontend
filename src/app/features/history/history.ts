@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Registration } from '../../core/interfaces/db/Registration.interface';
-import { movementsMock } from '../../core/mocks/movements.mock';
 import { MovementInfoCard } from "../../shared/movement-info-card/movement-info-card";
 import { ProductInfo } from "../../shared/product-info/product-info";
+import { Storage } from '../../core/services/storage';
+import { Financial } from '../../core/services/financial';
+import { storageKeysEnum } from '../../core/utils/storageKeys';
 
 @Component({
   selector: 'app-history',
@@ -12,13 +14,22 @@ import { ProductInfo } from "../../shared/product-info/product-info";
 })
 export class History implements OnInit {
   
-  registration: Registration | null = null;
+  registration = signal<any>(undefined);
+
+  storageService: Storage = inject(Storage);
+  financialService: Financial = inject(Financial);
 
   ngOnInit(): void {
     this.getRegistrationHistory();  
   }
 
-  getRegistrationHistory() {
-    this.registration = movementsMock;
+  async getRegistrationHistory() {
+    const value = this.storageService.getItem(storageKeysEnum.SELECTED_REGISTRATION);
+    if (value) {
+      const registration:Registration = JSON.parse(value);
+      const result = await this.financialService.getRegistrationMovements(registration.id);
+      console.log('getRegistrationHistory.result: ', result);
+      this.registration.update(() => result);
+    }
   }
 }

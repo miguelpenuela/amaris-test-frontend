@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { BalanceCard } from "../../shared/balance-card/balance-card";
 import { ProductSubscribedCard } from "../../shared/product-subscribed-card/product-subscribed-card";
 import { Registration } from '../../core/interfaces/db/Registration.interface';
@@ -16,7 +16,7 @@ import { Loader } from "../../layout/loader/loader";
 })
 export class Home implements OnInit {
   
-  registrations: Registration[] | null = null;
+  registrations = signal<Registration[]>([]);
   customerInfo: Customer | null = null;
 
   showLoader: boolean = true;
@@ -26,24 +26,20 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.getCustomerInfo();
-    this.getSubcribedProducts();
   }
 
   getCustomerInfo() {
-    console.log('getCustomerInfo.in');
     const value = this.storageService.getItem(storageKeysEnum.CUSTOMER_INFO);
     if (value) {
-      this.customerInfo = JSON.parse(value);
+      this.customerInfo = {...JSON.parse(value)};
+      this.getSubcribedProducts();
     }
   }
 
   async getSubcribedProducts() {
     console.log('getSubcribedProducts.in');
-    if (this.customerInfo) {
-      const result = await this.financialService.getCustomerSubscriptions(this.customerInfo.id);
-      console.log('getSubcribedProducts.result: ', result);
-      this.registrations = result;
-      this.showLoader = false;
-    }
+    const result: Registration[] = await this.financialService.getCustomerSubscriptions(this.customerInfo?.id||0);
+    this.registrations.update((items) => [...items, ...result]);
+    this.showLoader = false;
   }
 }

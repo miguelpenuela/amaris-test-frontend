@@ -3,5 +3,6 @@ export enum storageKeysEnum {
     SELECTED_REGISTRATION = "selectedRegistration",
     CUSTOMER_INFO = "customerInfo",
     USER_INFO = "userInfo",
-    ERROR = "error"
+    ACTIVE_SESSION = "activeSession",
+    ERROR = "error",
 }

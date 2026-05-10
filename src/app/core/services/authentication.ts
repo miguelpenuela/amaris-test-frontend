@@ -37,6 +37,7 @@ export class Authentication {
         console.log('login.result: ', result);
         this.storageService.setItem(storageKeysEnum.CUSTOMER_INFO, JSON.stringify(result.customer_info));
         this.storageService.setItem(storageKeysEnum.USER_INFO, JSON.stringify(result.user));
+        this.storageService.setItem(storageKeysEnum.ACTIVE_SESSION, 'true');
         resolve(result);
       } catch (error) {
         console.log('login.error: ', error);

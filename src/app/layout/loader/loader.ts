@@ -4,8 +4,7 @@ import { Component, Input, input, OnChanges, SimpleChanges } from '@angular/core
   selector: 'app-loader',
   imports: [],
   templateUrl: './loader.html',
-  styleUrl: './loader.scss',
-  standalone: true
+  styleUrl: './loader.scss'
 })
 export class Loader implements OnChanges {
   @Input() visible: boolean = false;
