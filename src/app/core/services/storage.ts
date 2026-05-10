@@ -9,7 +9,8 @@ export class Storage {
   }
 
   getItem(key: string) {
-    localStorage.getItem(key);
+    const element = localStorage.getItem(key);
+    return element ? element : undefined;
   }
 
   delete() {

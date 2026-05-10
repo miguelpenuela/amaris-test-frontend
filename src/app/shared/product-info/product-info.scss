@@ -1,0 +1,31 @@
+.product-info-container {
+    background-color: var(--btg-primary);
+    padding: 16px;
+    border-radius: var(--btg-radius-md);
+    color: var(--btg-text-light);
+    margin-bottom: 24px;
+
+    &__lbl-1 {
+        font-size: 12pt;
+        font-weight: bold;
+        color: var(--btg-text-light);
+    }
+
+    &__lbl-2 {
+        font-size: 16pt;
+        font-weight: bold;
+        color: var(--btg-text-light);
+    }
+
+    &__min-invest {
+        font-size: 18pt;
+        font-weight: bold;
+        color: var(--btg-accent);
+    }
+
+    &__current-balance {
+        font-size: 18pt;
+        font-weight: bold;
+        color: var(--btg-text-light);
+    }
+}

@@ -1,18 +1,27 @@
-<div class="product-subscribed-container">
-    <p class="product-subscribed-container__lbl-1">
-        <i class="fa fa-wallet"></i> {{registration?.product?.name}}<br/>
-    </p>
-    <span>Subscription Date: {{registration?.created_at}}</span><br/>
-    <span>Current Balance:</span><br/>
-    <span class="product-subscribed-container__current-balance">{{registration?.balance | currency: 'COP'}}</span>
-    <hr/>
-    <div class="row product-subscribed-container__options">
-        <div class="col-12">
-            <div class="d-grid gap-2">
-                <button class="btn btn-secondary">
-                    Cancel Subscription
-                </button>
+@if (registration) {
+    <div class="product-subscribed-container">
+        <p class="product-subscribed-container__lbl-1">
+            <i class="fa fa-wallet"></i> {{registration.product?.name}}<br/>
+        </p>
+        <span>Subscription Date: {{registration.created_at | date: 'd/M/yy, h:mm a'}}</span><br/>
+        <span>Current Balance:</span><br/>
+        <span class="product-subscribed-container__current-balance">{{registration.balance | currency: 'COP'}}</span>
+        <hr/>
+        <div class="row product-subscribed-container__options">
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-secondary" (click)="cancelSubscription()">
+                        <i class="fa-solid fa-ban"></i> Cancel
+                    </button>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="historySubscription()">
+                        <i class="fa-solid fa-clock-rotate-left"></i> Show History
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+}

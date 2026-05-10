@@ -1,0 +1,33 @@
+.movement-info-card-container {
+    background-color: var(--btg-surface);
+    padding: 16px;
+    border-radius: var(--btg-radius-md);
+    color: var(--btg-text-primary);
+    margin-bottom: 16px;
+    
+
+    &__icon {
+        font-weight: bold;
+        font-size: 18pt;
+        text-align: center;
+        padding: 10px;
+    }
+
+    &__info {
+        font-size: 12pt;
+        text-align: left;
+        padding: 10px;
+
+        &__tag {
+            border: 1px solid var(--btg-text-primary);
+            border-radius: var(--btg-radius-md);
+            padding: 0px 5px 0px 5px;
+        }
+    }
+
+    &__amount {
+        font-size: 14pt;
+        font-weight: bold;
+        color: var(--btg-text-primary);
+    }
+}

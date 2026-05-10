@@ -1,0 +1,17 @@
+.available-balance-container {
+    background-color: var(--btg-background-white);
+    border-radius: var(--btg-radius-md);
+
+    &__icon {
+        font-weight: bold;
+        font-size: 18pt;
+        text-align: center;
+        padding: 10px;
+    }
+
+    &__info {
+        font-size: 12pt;
+        text-align: left;
+        padding: 10px;
+    }
+}

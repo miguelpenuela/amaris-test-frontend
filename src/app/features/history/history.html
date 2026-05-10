@@ -1,7 +1,17 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <p>History</p>
-        </div>
+<div class="row">
+    <div class="col-12">
+        @if (registration && registration.product) {
+            <app-product-info [product]="registration.product" [lbl1]="'HISTORY'" [currentBalance]="registration.balance"></app-product-info>
+        }
     </div>
 </div>
+<div class="row">
+    <div class="col-12">
+        <p class="title">History</p>
+    </div>
+</div>
+@if (registration && registration.movements) {
+    @for (movement of registration.movements; track $index) {
+        <app-movement-info-card [movement]="movement"></app-movement-info-card>
+    }
+}

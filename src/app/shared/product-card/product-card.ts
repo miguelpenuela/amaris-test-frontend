@@ -3,6 +3,7 @@ import { Product } from '../../core/interfaces/db/Product.interface';
 import { CurrencyPipe } from '@angular/common';
 import { Storage } from '../../core/services/storage';
 import { Router } from '@angular/router';
+import { storageKeysEnum } from '../../core/utils/storageKeys';
 
 @Component({
   selector: 'app-product-card',
@@ -19,7 +20,7 @@ export class ProductCard {
 
   investProduct() {
     console.log('investProduct.product: ', this.product);
-    this.storageService.setItem('selectedProduct', JSON.stringify(this.product));
+    this.storageService.setItem(storageKeysEnum.SELECTED_PRODUCT, JSON.stringify(this.product));
     this.router.navigate(['app/subscribe']);
   }
 

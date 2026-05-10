@@ -1,1 +1,26 @@
-<p>subscribe works!</p>
+<div class="row">
+    <div class="col-12">
+        <app-product-info [product]="selectedProduct" [lbl1]="'SUBSCRIBE TO'"></app-product-info>
+    </div>
+</div>
+@if (customer) {
+    <div class="row">
+        <div class="col-12">
+            <div class="available-balance-container">
+                <div class="row">
+                    <div class="col-1">
+                        <div class="available-balance-container__icon">
+                            <i class="fa-solid fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                    <div class="col-11">
+                        <div class="available-balance-container__info">
+                            <span>Available Balance</span>
+                            <span>{{customer.general_balance | currency: 'COP'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,18 @@
+@if (product) {
+    <div class="product-info-container">
+        <label class="product-info-container__lbl-1">{{lbl1}}</label>
+        <p class="product-info-container__lbl-2"><span>{{product.name}}</span></p>
+        <div class="row product-info-container_options">
+            <div class="col-6">
+                <span>Min. Invesment:</span><br/>
+                <span class="product-info-container__min-invest">{{product.min_amount | currency: 'COP'}}</span>
+            </div>
+            <div class="col-6">
+                @if (currentBalance > 0) {
+                    <span>Current Balance:</span><br/>
+                    <span class="product-info-container__current-balance">{{currentBalance | currency: 'COP'}}</span>
+                }
+            </div>
+        </div>
+    </div>
+}
