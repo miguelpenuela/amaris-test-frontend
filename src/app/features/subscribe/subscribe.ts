@@ -6,6 +6,7 @@ import { storageKeysEnum } from '../../core/utils/storageKeys';
 import { Customer } from '../../core/interfaces/db/Customer.interface';
 import { CurrencyPipe } from '@angular/common';
 import { customerInfoMock } from '../../core/mocks/customer-info.mock';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-subscribe',
@@ -22,6 +23,17 @@ export class Subscribe implements OnInit {
 
   selectedProduct: Product | null = null;
   customer: Customer | null = null;
+
+  form: FormGroup;
+  formBuilder = inject(FormBuilder);
+
+  constructor() {
+    this.form = this.formBuilder.group({
+      product_id: ['', [Validators.required]],
+      customer_id: [this.customer?.id, [Validators.required]],
+      balance: ['', [Validators.required, Validators.min(this.selectedProduct ? this.selectedProduct.min_amount : 0)]]
+    });
+  }
 
   ngOnInit(): void {
     this.getSelectedProduct();

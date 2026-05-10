@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Storage } from '../../core/services/storage';
+import { storageKeysEnum } from '../../core/utils/storageKeys';
+import { IError } from '../../core/interfaces/ux/Error.interface';
 
 @Component({
   selector: 'app-error',
@@ -6,6 +9,21 @@ import { Component } from '@angular/core';
   templateUrl: './error.html',
   styleUrl: './error.scss',
 })
-export class Error {
+export class Error implements OnInit {
+  
+  error: IError | null = null;
+
+  storageService: Storage = inject(Storage);
+
+  ngOnInit(): void {
+    this.getErrorDetails();
+  }
+
+  getErrorDetails() {
+    const value = this.storageService.getItem(storageKeysEnum.ERROR);
+    if (value) {
+      this.error = JSON.parse(value);
+    }
+  }
 
 }

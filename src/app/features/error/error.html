@@ -1,1 +1,13 @@
-<p>error works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="icon-container">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <div class="error-title">
+            <p class="title">{{error?.title || 'No title'}}</p>
+        </div>
+        <div class="error-description">
+            <p>{{error?.message || 'No message'}}</p>
+        </div>
+    </div>
+</div>

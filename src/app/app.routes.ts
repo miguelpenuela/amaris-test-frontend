@@ -7,6 +7,7 @@ import { Products } from './features/products/products';
 import { Subscribe } from './features/subscribe/subscribe';
 import { History } from './features/history/history';
 import { authGuard } from './core/guards/auth-guard';
+import { Error } from './features/error/error';
 
 export const routes: Routes = [
     {
@@ -41,6 +42,10 @@ export const routes: Routes = [
             {
                 path: "history",
                 component: History
+            },
+            {
+                path: "error",
+                component: Error
             }
         ]
     }

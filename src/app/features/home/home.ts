@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BalanceCard } from "../../shared/balance-card/balance-card";
 import { ProductSubscribedCard } from "../../shared/product-subscribed-card/product-subscribed-card";
 import { Registration } from '../../core/interfaces/db/Registration.interface';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { Registration } from '../../core/interfaces/db/Registration.interface';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {
+export class Home implements OnInit {
+  
   registrations: Registration[] = [
     {
         "product_id": 3,
@@ -27,4 +29,8 @@ export class Home {
         }
     }
   ]
+
+  ngOnInit(): void {
+    console.log('HOME: ');
+  }
 }
