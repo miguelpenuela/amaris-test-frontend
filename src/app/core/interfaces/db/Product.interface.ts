@@ -1,5 +1,4 @@
 import { ProductType } from "./ProductType.interface";
-import { Registration } from "./Registration.interface";
 
 export interface Product {
   id: number;

@@ -6,7 +6,7 @@ import { NavigationMenu } from "../../layout/navigation-menu/navigation-menu";
 
 @Component({
   selector: 'app-application',
-  imports: [RouterOutlet, Header, Footer, NavigationMenu],
+  imports: [RouterOutlet, Header, NavigationMenu],
   templateUrl: './application.html',
   styleUrl: './application.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

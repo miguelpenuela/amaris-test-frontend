@@ -1,1 +1,20 @@
-<p>product-card works!</p>
+<div class="product-card-container">
+    <p class="product-card-container__lbl-1">
+        <i class="fa fa-wallet"></i> {{product?.name}}<br/>
+    </p>
+    <span>Type: {{product?.product_type?.name}}</span><br/>
+    <hr/>
+    <div class="row product-card-container__options">
+        <div class="col-6">
+            <span>Min. Invesment:</span><br/>
+            <span class="product-card-container__current-balance">{{product?.min_amount| currency: 'COP'}}</span>
+        </div>
+        <div class="col-6">
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" (click)="investProduct()">
+                    Invest Now
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+.product-card-container {
+    background-color: var(--btg-surface);
+    padding: 16px;
+    border-radius: var(--btg-radius-md);
+    color: var(--btg-text-primary);
+    margin-bottom: 24px;
+
+    &__lbl-1 {
+        font-size: 16pt;
+        font-weight: bold;
+        color: var(--btg-primary-light);
+    }
+    &__current-balance {
+        font-size: 18pt;
+        font-weight: bold;
+        color: var(--btg-accent);
+    } 
+}
