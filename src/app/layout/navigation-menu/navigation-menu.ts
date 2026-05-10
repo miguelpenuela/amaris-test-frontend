@@ -19,11 +19,11 @@ export class NavigationMenu {
       icon: "fa-solid fa-magnifying-glass",
       label: "Explore",
       navigationPath: 'products'
-    }/*,
+    },
     {
-      icon: "fa-solid fa-clock-rotate-left",
-      label: "History",
-      navigationPath: 'history'
-    }*/
+      icon: "fa-solid fa-arrow-right-from-bracket",
+      label: "Salir",
+      navigationPath: 'close-session'
+    }
   ]
 }

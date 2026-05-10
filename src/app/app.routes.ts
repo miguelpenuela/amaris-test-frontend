@@ -8,6 +8,7 @@ import { Subscribe } from './features/subscribe/subscribe';
 import { History } from './features/history/history';
 import { authGuard } from './core/guards/auth-guard';
 import { Error } from './features/error/error';
+import { CloseSession } from './features/close-session/close-session';
 
 export const routes: Routes = [
     {
@@ -46,6 +47,10 @@ export const routes: Routes = [
             {
                 path: "error",
                 component: Error
+            },
+            {
+                path: "close-session",
+                component: CloseSession
             }
         ]
     }

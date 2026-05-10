@@ -1,13 +1,16 @@
 <div class="row">
     <div class="col-12">
-        <app-balance-card></app-balance-card>
+        <app-balance-card [customerInfo]="customerInfo"></app-balance-card>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
         <p class="title">Active Portfolio</p>
-        @for (reg of registrations; track $index) {
-            <app-product-subscribed-card [registration]="reg"></app-product-subscribed-card>
+        @if (registrations) {
+            @for (reg of registrations; track $index) {
+                <app-product-subscribed-card [registration]="reg"></app-product-subscribed-card>
+            }
         }
     </div>
 </div>
+<app-loader [visible]="showLoader"></app-loader>

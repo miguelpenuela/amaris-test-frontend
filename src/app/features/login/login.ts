@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
+import { Authentication } from '../../core/services/authentication';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,13 @@ export class Login {
   
   form: FormGroup;
   formBuilder = inject(FormBuilder);
+  authServices: Authentication = inject(Authentication);
+  router: Router = inject(Router);
 
   constructor() {
     this.form = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      username: ['felipegarxon@hotmail.com', [Validators.required, Validators.email]],
+      password: ['miclave123', [Validators.required]],
     });
 
     this.form.valueChanges.subscribe((value) => {
@@ -27,7 +30,9 @@ export class Login {
     })
   }
 
-  login() {
-    console.log('Login: ', this.form.value);
+  async login() {
+    const result = await this.authServices.login(this.form.value);
+    console.log('Login.result: ', result);
+    this.router.navigate(['/app/home']);
   }
 }

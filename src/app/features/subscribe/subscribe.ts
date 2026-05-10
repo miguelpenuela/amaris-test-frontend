@@ -5,7 +5,7 @@ import { Storage } from '../../core/services/storage';
 import { storageKeysEnum } from '../../core/utils/storageKeys';
 import { Customer } from '../../core/interfaces/db/Customer.interface';
 import { CurrencyPipe } from '@angular/common';
-import { customerInfoMock } from '../../core/mocks/customer-info.mock';
+// import { customerInfoMock } from '../../core/mocks/customer-info.mock';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -52,7 +52,7 @@ export class Subscribe implements OnInit {
     if (value) {
       this.customer = JSON.parse(value);
     }
-    this.customer = customerInfoMock.customer_info;
+    // this.customer = customerInfoMock.customer_info;
   }
 
 }

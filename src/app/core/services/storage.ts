@@ -13,7 +13,7 @@ export class Storage {
     return element ? element : undefined;
   }
 
-  delete() {
+  clearStorage() {
     localStorage.clear();
   }
 }

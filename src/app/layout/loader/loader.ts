@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input, input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-loader',
@@ -7,7 +7,12 @@ import { Component, Input, input } from '@angular/core';
   styleUrl: './loader.scss',
   standalone: true
 })
-export class Loader {
+export class Loader implements OnChanges {
   @Input() visible: boolean = false;
-  @Input() message: string = 'Cargando...';
+  @Input() message: string = 'Loading data...';
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Loader.changes: ', changes);
+  }
+
 }

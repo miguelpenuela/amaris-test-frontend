@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { Customer } from '../../core/interfaces/db/Customer.interface';
 import { CurrencyPipe } from '@angular/common';
+import { Storage } from '../../core/services/storage';
+import { storageKeysEnum } from '../../core/utils/storageKeys';
 
 @Component({
   selector: 'app-balance-card',
@@ -10,16 +12,21 @@ import { CurrencyPipe } from '@angular/common';
   templateUrl: './balance-card.html',
   styleUrl: './balance-card.scss',
 })
-export class BalanceCard {
-  customerInfo: Customer = {
-    id: 20,
-    name: 'miguel felipe',
-    surname: 'penuela garzon',
-    city_id: 608,
-    created_at: '2026-05-09 20:12:56.58522',
-    updated_at: '2026-05-09 20:12:56.58522',
-    status: 'ACTIVO',
-    general_balance: 500000,
-    email: 'felipegarxon@hotmail.com'
+export class BalanceCard implements OnInit {
+  @Input() customerInfo: Customer | null = null;
+
+  storageService: Storage = inject(Storage);
+
+  ngOnInit(): void {
+    // this.getCustomerInfo();
+  }
+
+  getCustomerInfo() {
+    console.log('getCustomerInfo.in')
+    const value = this.storageService.getItem(storageKeysEnum.CUSTOMER_INFO);
+    console.log('getCustomerInfo.value:', value);
+    if (value) {
+      this.customerInfo = JSON.parse(value);
+    }
   }
 }
