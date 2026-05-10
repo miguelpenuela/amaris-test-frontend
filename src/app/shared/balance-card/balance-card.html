@@ -1,1 +1,22 @@
-<p>balance-card works!</p>
+<div class="balance-container">
+    <label class="balance-container__lbl-1">GENERAL BALANCE</label>
+    <p class="balance-container__lbl-2"><span>{{customerInfo.general_balance | currency: 'COP' }}</span></p>
+    <div class="row balance-container__balance-container-option">
+        <div class="col-6">
+            <div class="d-grid gap-2">
+                <button class="btn balance-container__balance-container-option__option-1">
+                    <i class="fa fa-plus"></i><br/>
+                    Invest <br/>More
+                </button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="d-grid gap-2">
+                <button class="btn balance-container__balance-container-option__option-2">
+                    <i class="fa fa-eye"></i><br/>
+                    View <br/>Report
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

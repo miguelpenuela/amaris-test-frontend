@@ -7,8 +7,8 @@ export interface Registration {
   product_id: number;
   customer_id: number;
 
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
 
   status: string;
   balance: number;

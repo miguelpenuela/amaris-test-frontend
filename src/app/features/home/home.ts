@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BalanceCard } from "../../shared/balance-card/balance-card";
 import { ProductSubscribedCard } from "../../shared/product-subscribed-card/product-subscribed-card";
+import { Registration } from '../../core/interfaces/db/Registration.interface';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +10,21 @@ import { ProductSubscribedCard } from "../../shared/product-subscribed-card/prod
   styleUrl: './home.scss',
 })
 export class Home {
-  registrations: any[] = [
+  registrations: Registration[] = [
     {
-      item: 1
-    },
-    {
-      item: 2
-    },
-    {
-      item: 3
+        "product_id": 3,
+        "customer_id": 20,
+        "updated_at": "2026-05-09T21:28:16.629254",
+        "balance": 150000.0,
+        "id": 5,
+        "created_at": "2026-05-09T21:28:16.629246",
+        "status": "ACTIVO",
+        "product": {
+            "product_type_id": 1,
+            "name": "FPV_BTG_PACTUAL_ECOPETROL",
+            "min_amount": 125000.0,
+            "id": 3
+        }
     }
   ]
 }

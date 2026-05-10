@@ -1,1 +1,18 @@
-<p>product-subscribed-card works!</p>
+<div class="product-subscribed-container">
+    <p class="product-subscribed-container__lbl-1">
+        <i class="fa fa-wallet"></i> {{registration?.product?.name}}<br/>
+    </p>
+    <span>Subscription Date: {{registration?.created_at}}</span><br/>
+    <span>Current Balance:</span><br/>
+    <span class="product-subscribed-container__current-balance">{{registration?.balance | currency: 'COP'}}</span>
+    <hr/>
+    <div class="row product-subscribed-container__options">
+        <div class="col-12">
+            <div class="d-grid gap-2">
+                <button class="btn btn-secondary">
+                    Cancel Subscription
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

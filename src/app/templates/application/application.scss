@@ -1,5 +1,4 @@
 .app-container {
-    //border:1px solid red;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -7,17 +6,16 @@
 }
 
 .header-container {
-    //border:1px solid yellow;
     display: flex;
 }
 
 .content {
-    //border:1px solid blue;
     display: flex;
+    flex-direction: column;
     flex: 1;
+    padding: 16px;
 }
 
 .footer-container {
-    //border:1px solid red;
     display: flex;
 }
