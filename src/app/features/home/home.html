@@ -6,8 +6,13 @@
 <div class="row">
     <div class="col-12">
         <p class="title">Active Portfolio</p>
-        @for (reg of registrations(); track $index) {
-            <app-product-subscribed-card [registration]="reg"></app-product-subscribed-card>
+        @if (registrations().length > 0) {
+            @for (reg of registrations(); track $index) {
+                <app-product-subscribed-card [registration]="reg"></app-product-subscribed-card>
+            }
+        } @else {
+            <p>There are not subscriptions yet!</p>
+            <p>Please, <i class="fa-solid fa-magnifying-glass"></i> Explore the funds</p>
         }
     </div>
 </div>

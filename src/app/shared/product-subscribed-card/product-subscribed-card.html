@@ -9,11 +9,15 @@
         <hr/>
         <div class="row product-subscribed-container__options">
             <div class="col-6">
-                <div class="d-grid gap-2">
-                    <button class="btn btn-secondary" (click)="cancelSubscription()">
-                        <i class="fa-solid fa-ban"></i> Cancel
-                    </button>
-                </div>
+                @if (registration.status == 'ACTIVO') {
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-secondary" (click)="cancelSubscription()">
+                            <i class="fa-solid fa-ban"></i> Cancel
+                        </button>
+                    </div>
+                } @else { 
+                    <p>{{registration.status}}</p>
+                }
             </div>
             <div class="col-6">
                 <div class="d-grid gap-2">

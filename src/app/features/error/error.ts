@@ -13,7 +13,7 @@ export class Error implements OnInit {
   
   error: IError | null = null;
 
-  storageService: Storage = inject(Storage);
+  private storageService: Storage = inject(Storage);
 
   ngOnInit(): void {
     this.getErrorDetails();

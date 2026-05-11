@@ -17,11 +17,11 @@ export class MovementInfoCard {
 
   getIconByType(type: string) {
     return {
-      "SUBSCRIBE": {
+      "SUBSCRIBED": {
         icon: 'fa-solid fa-user-plus',
         color: '#0284C7'
       },
-      "UNSUBSCRIBE": {
+      "UNSUBSCRIBED": {
         icon: 'fa-solid fa-user-plus',
         color: '#F59E0B'
       },

@@ -10,8 +10,8 @@ import { Storage } from '../../core/services/storage';
 })
 export class CloseSession {
 
-  router: Router = inject(Router);
-  storageService: Storage = inject(Storage);
+  private router: Router = inject(Router);
+  private storageService: Storage = inject(Storage);
 
   cancel() {
     this.router.navigate(['/app/home']);

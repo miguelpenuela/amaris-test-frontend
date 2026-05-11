@@ -15,7 +15,7 @@ import { storageKeysEnum } from '../../core/utils/storageKeys';
 export class BalanceCard implements OnInit {
   @Input() customerInfo: Customer | null = null;
 
-  storageService: Storage = inject(Storage);
+  private storageService: Storage = inject(Storage);
 
   ngOnInit(): void {
     // this.getCustomerInfo();

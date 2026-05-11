@@ -21,8 +21,8 @@ export class Home implements OnInit {
 
   showLoader: boolean = true;
 
-  storageService: Storage = inject(Storage);
-  financialService: Financial = inject(Financial);
+  private storageService: Storage = inject(Storage);
+  private financialService: Financial = inject(Financial);
 
   ngOnInit(): void {
     this.getCustomerInfo();

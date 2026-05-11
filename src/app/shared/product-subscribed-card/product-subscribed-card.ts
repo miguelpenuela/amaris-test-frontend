@@ -4,6 +4,7 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { storageKeysEnum } from '../../core/utils/storageKeys';
 import { Storage } from '../../core/services/storage';
+import { Financial } from '../../core/services/financial';
 
 @Component({
   selector: 'app-product-subscribed-card',
@@ -19,6 +20,7 @@ export class ProductSubscribedCard implements OnChanges {
   @Input() registration: Registration | null = null;
   private router = inject(Router);
   private storageService = inject(Storage);
+  private financialService = inject(Financial);
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ProductSubscribedCard.changes: ', changes)
@@ -30,7 +32,16 @@ export class ProductSubscribedCard implements OnChanges {
     this.router.navigate(['app/history']);
   }
 
-  cancelSubscription() {
+  async cancelSubscription() {
     console.log('cancelSubscription.registration: ', this.registration);
+    if (this.registration) {
+      try {
+        const result = await this.financialService.cancelSubscription(this.registration.id);
+        this.storageService.setItem(storageKeysEnum.CUSTOMER_INFO, JSON.stringify(result));
+        window.location.reload();
+      } catch(error: any) {
+        console.log('cancelSubscription.error: ', error);
+      }
+    }
   }
 }

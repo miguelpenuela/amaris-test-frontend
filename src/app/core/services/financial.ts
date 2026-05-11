@@ -8,7 +8,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class Financial {
   
-  httpService: HttpService = inject(HttpService);
+  private httpService: HttpService = inject(HttpService);
 
   getProductList(): Promise<any> {
     return new Promise(async (resolve, reject) => {
@@ -47,6 +47,20 @@ export class Financial {
         resolve(result);
       } catch (error) {
         console.log('getRegistrationMovements.error: ', error);
+        reject(error);
+      }
+    });
+  }
+
+  cancelSubscription(id: number): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const url = `${environment.basePath}/financial/cancel-subscription`;
+        const result = await lastValueFrom(this.httpService.postRequest(url, {id}));
+        console.log('cancelSubscription.result: ', result);
+        resolve(result);
+      } catch (error) {
+        console.log('cancelSubscription.error: ', error);
         reject(error);
       }
     });

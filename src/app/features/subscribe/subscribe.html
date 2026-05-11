@@ -24,62 +24,60 @@
         </div>
     </div>
 }
-
-<div class="row mt-2">
-    <div class="col-12">
-        <div class="form-field">
-            <label>Subscription Amount</label>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="fa fa-dollar"></i></span>
-                <input 
-                    type="number"
-                    class="form-control"
-                    [placeholder]="selectedProduct?.min_amount |currency:'COP'"
-                    [min]="selectedProduct?.min_amount"
-                />
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row mt-2">
-    <div class="col-12">
-        <div class="form-field">
-            <label>Notification Method</label>
-            <div class="row">
-                <div class="col-6">
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-secondary">
-                            <i class="fa-regular fa-envelope"></i> Email
-                        </button>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-secondary">
-                            <i class="fa-regular fa-message"></i> SMS
-                        </button>
-                    </div>
+<form (submit)="subscribe()" [formGroup]="form">
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="form-field">
+                <label>Subscription Amount</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-dollar"></i></span>
+                    <input 
+                        type="number"
+                        class="form-control"
+                        [placeholder]="selectedProduct?.min_amount |currency:'COP'"
+                        formControlName="balance"
+                    />
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="row mt-2">
-    <div class="col-12">
-        <div class="subscription-message">
-            <p>Please confirm to proccess your subscription</p>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="form-field">
+                <label>Notification Method</label>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-secondary" (click)="setNotificationType('email')">
+                                <i class="fa-regular fa-envelope"></i> Email
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-secondary" (click)="setNotificationType('sms')">
+                                <i class="fa-regular fa-message"></i> SMS
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="row mt-5">
-    <div class="col-12">
-        <div class="d-grid gap-2">
-            <button class="btn btn-primary" [disabled]="!this.form.valid">
-                <i class="fa-solid fa-lock"></i> Confirm Subscription
-            </button>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="subscription-message">
+                <p>Please confirm to proccess your subscription</p>
+            </div>
         </div>
     </div>
-</div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" [disabled]="!this.form.valid">
+                    <i class="fa-solid fa-lock"></i> Confirm Subscription
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

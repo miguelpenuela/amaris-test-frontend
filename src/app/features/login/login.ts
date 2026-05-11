@@ -16,8 +16,9 @@ export class Login {
   
   form: FormGroup;
   formBuilder = inject(FormBuilder);
-  authServices: Authentication = inject(Authentication);
-  router: Router = inject(Router);
+
+  private authServices: Authentication = inject(Authentication);
+  private router: Router = inject(Router);
 
   constructor() {
     this.form = this.formBuilder.group({

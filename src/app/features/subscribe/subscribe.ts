@@ -5,34 +5,39 @@ import { Storage } from '../../core/services/storage';
 import { storageKeysEnum } from '../../core/utils/storageKeys';
 import { Customer } from '../../core/interfaces/db/Customer.interface';
 import { CurrencyPipe } from '@angular/common';
-// import { customerInfoMock } from '../../core/mocks/customer-info.mock';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-subscribe',
   imports: [
     ProductInfo,
-    CurrencyPipe
+    CurrencyPipe,
+    ReactiveFormsModule
   ],
   templateUrl: './subscribe.html',
   styleUrl: './subscribe.scss',
 })
 export class Subscribe implements OnInit {
 
-  storageService = inject(Storage);
-
   selectedProduct: Product | null = null;
   customer: Customer | null = null;
-
+  
   form: FormGroup;
   formBuilder = inject(FormBuilder);
+  
+  private storageService = inject(Storage);
 
   constructor() {
     this.form = this.formBuilder.group({
       product_id: ['', [Validators.required]],
       customer_id: [this.customer?.id, [Validators.required]],
-      balance: ['', [Validators.required, Validators.min(this.selectedProduct ? this.selectedProduct.min_amount : 0)]]
+      balance: ['', []],
+      notification_type: ['', [Validators.required]]
     });
+
+    this.form.valueChanges.subscribe((values) => {
+      console.log('value changes: ', values);
+    })
   }
 
   ngOnInit(): void {
@@ -44,6 +49,13 @@ export class Subscribe implements OnInit {
     const value = this.storageService.getItem(storageKeysEnum.SELECTED_PRODUCT)
     if (value) {
       this.selectedProduct = JSON.parse(value);
+      const minValue = this.selectedProduct ? this.selectedProduct.min_amount : 0;
+      const maxValue = this.customer ? this.customer.general_balance : 0;
+      this.form.controls['balance'].addValidators([
+        Validators.required,
+        Validators.min(minValue)
+      ])
+      this.form.controls['product_id'].setValue(this.selectedProduct?.id);
     }
   }
 
@@ -51,8 +63,16 @@ export class Subscribe implements OnInit {
     const value = this.storageService.getItem(storageKeysEnum.CUSTOMER_INFO);
     if (value) {
       this.customer = JSON.parse(value);
+      this.form.controls['customer_id'].setValue(this.customer?.id);
     }
-    // this.customer = customerInfoMock.customer_info;
+  }
+
+  setNotificationType(type: string) {
+    this.form.controls['notification_type'].setValue(type);
+  }
+
+  subscribe() {
+    console.log('subscribe with data: ', this.form.value)
   }
 
 }

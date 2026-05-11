@@ -12,8 +12,8 @@ import { storageKeysEnum } from '../utils/storageKeys';
 })
 export class Authentication {
   
-  httpService: HttpService = inject(HttpService);
-  storageService: Storage = inject(Storage);
+  private httpService: HttpService = inject(HttpService);
+  private storageService: Storage = inject(Storage);
 
   register(body: ICreateCustomer): Promise<any> {
     return new Promise(async (resolve, reject) => {
