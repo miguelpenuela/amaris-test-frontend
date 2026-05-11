@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    basePath: 'http://127.0.0.1:8000/v1/api/'
+    basePath: 'http://3.84.173.144:8000/v1/api/'
 };
