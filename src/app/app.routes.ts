@@ -24,6 +24,10 @@ export const routes: Routes = [
         component: Register,
     },
     {
+        path: "error",
+        component: Error
+    },
+    {
         path: "app",
         component: Application,
         canActivate: [authGuard],
