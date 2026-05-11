@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpService } from './http-service';
 import { environment } from '../../../environments/environment';
 import { lastValueFrom } from 'rxjs';
+import { ICreateRegistration } from '../interfaces/request/CreateRegistration.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +48,20 @@ export class Financial {
         resolve(result);
       } catch (error) {
         console.log('getRegistrationMovements.error: ', error);
+        reject(error);
+      }
+    });
+  }
+
+  subscribe(body: ICreateRegistration): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const url = `${environment.basePath}/financial/subscribe`;
+        const result = await lastValueFrom(this.httpService.postRequest(url, body));
+        console.log('subscribe.result: ', result);
+        resolve(result);
+      } catch (error) {
+        console.log('subscribe.error: ', error);
         reject(error);
       }
     });

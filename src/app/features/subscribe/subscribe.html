@@ -38,6 +38,12 @@
                         formControlName="balance"
                     />
                 </div>
+                @if (balanceErrors !== null) {
+                    <div class="error-field">
+                        <p>{{balanceErrors.min ? 'The amount is less than the minimum allowed' : ''}}</p>
+                        <p>{{balanceErrors.max ? 'The amount exceeds your general balance' : ''}}</p>
+                    </div>
+                }
             </div>
         </div>
     </div>
@@ -48,14 +54,14 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="d-grid gap-2">
-                            <button class="btn btn-secondary" (click)="setNotificationType('email')">
+                            <button type="button" class="btn btn-secondary" (click)="setNotificationType('email')">
                                 <i class="fa-regular fa-envelope"></i> Email
                             </button>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="d-grid gap-2">
-                            <button class="btn btn-secondary" (click)="setNotificationType('sms')">
+                            <button type="button" class="btn btn-secondary" (click)="setNotificationType('sms')">
                                 <i class="fa-regular fa-message"></i> SMS
                             </button>
                         </div>

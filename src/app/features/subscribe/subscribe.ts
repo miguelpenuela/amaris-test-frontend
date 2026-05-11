@@ -6,6 +6,8 @@ import { storageKeysEnum } from '../../core/utils/storageKeys';
 import { Customer } from '../../core/interfaces/db/Customer.interface';
 import { CurrencyPipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Financial } from '../../core/services/financial';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subscribe',
@@ -24,8 +26,13 @@ export class Subscribe implements OnInit {
   
   form: FormGroup;
   formBuilder = inject(FormBuilder);
+
+  balanceControl: any;
+  balanceErrors: any;
   
-  private storageService = inject(Storage);
+  private storageService: Storage = inject(Storage);
+  private financialService: Financial = inject(Financial);
+  private router: Router = inject(Router);
 
   constructor() {
     this.form = this.formBuilder.group({
@@ -35,14 +42,16 @@ export class Subscribe implements OnInit {
       notification_type: ['', [Validators.required]]
     });
 
+    this.balanceControl = this.form.get('balance');
+
     this.form.valueChanges.subscribe((values) => {
-      console.log('value changes: ', values);
+      this.balanceErrors = this.balanceControl?.errors;
     })
   }
 
   ngOnInit(): void {
-    this.getSelectedProduct();
     this.getCustomerInfo();
+    this.getSelectedProduct();
   }
 
   getSelectedProduct() {
@@ -51,9 +60,11 @@ export class Subscribe implements OnInit {
       this.selectedProduct = JSON.parse(value);
       const minValue = this.selectedProduct ? this.selectedProduct.min_amount : 0;
       const maxValue = this.customer ? this.customer.general_balance : 0;
+      console.log('maxValue: ', maxValue);
       this.form.controls['balance'].addValidators([
         Validators.required,
-        Validators.min(minValue)
+        Validators.min(minValue),
+        Validators.max(maxValue)
       ])
       this.form.controls['product_id'].setValue(this.selectedProduct?.id);
     }
@@ -71,8 +82,15 @@ export class Subscribe implements OnInit {
     this.form.controls['notification_type'].setValue(type);
   }
 
-  subscribe() {
-    console.log('subscribe with data: ', this.form.value)
+  async subscribe() {
+    try {
+      console.log('subscribe with data: ', this.form.value);
+      const result = await this.financialService.subscribe(this.form.value);
+      this.storageService.setItem(storageKeysEnum.CUSTOMER_INFO, JSON.stringify(result));
+      this.router.navigate(['app/home']);
+    } catch (error) {
+      console.log('subscribe.error: ', error);
+    }
   }
 
 }
