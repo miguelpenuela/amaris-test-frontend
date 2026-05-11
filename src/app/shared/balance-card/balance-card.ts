@@ -24,7 +24,7 @@ export class BalanceCard implements OnInit {
   getCustomerInfo() {
     console.log('getCustomerInfo.in')
     const value = this.storageService.getItem(storageKeysEnum.CUSTOMER_INFO);
-    console.log('getCustomerInfo.value:', value);
+    // console.log('getCustomerInfo.value:', value);
     if (value) {
       this.customerInfo = JSON.parse(value);
     }

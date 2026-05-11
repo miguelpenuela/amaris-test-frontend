@@ -15,25 +15,21 @@ import { Financial } from '../../core/services/financial';
   templateUrl: './product-subscribed-card.html',
   styleUrl: './product-subscribed-card.scss',
 })
-export class ProductSubscribedCard implements OnChanges {
+export class ProductSubscribedCard {
 
   @Input() registration: Registration | null = null;
   private router = inject(Router);
   private storageService = inject(Storage);
   private financialService = inject(Financial);
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('ProductSubscribedCard.changes: ', changes)
-  }
-
   historySubscription() {
-    console.log('historySubscription.registration: ', this.registration);
+    // console.log('historySubscription.registration: ', this.registration);
     this.storageService.setItem(storageKeysEnum.SELECTED_REGISTRATION, JSON.stringify(this.registration));
     this.router.navigate(['app/history']);
   }
 
   async cancelSubscription() {
-    console.log('cancelSubscription.registration: ', this.registration);
+    // console.log('cancelSubscription.registration: ', this.registration);
     if (this.registration) {
       try {
         const result = await this.financialService.cancelSubscription(this.registration.id);

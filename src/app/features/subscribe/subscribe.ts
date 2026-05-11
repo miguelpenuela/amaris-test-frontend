@@ -60,7 +60,6 @@ export class Subscribe implements OnInit {
       this.selectedProduct = JSON.parse(value);
       const minValue = this.selectedProduct ? this.selectedProduct.min_amount : 0;
       const maxValue = this.customer ? this.customer.general_balance : 0;
-      console.log('maxValue: ', maxValue);
       this.form.controls['balance'].addValidators([
         Validators.required,
         Validators.min(minValue),
@@ -84,7 +83,7 @@ export class Subscribe implements OnInit {
 
   async subscribe() {
     try {
-      console.log('subscribe with data: ', this.form.value);
+      // console.log('subscribe with data: ', this.form.value);
       const result = await this.financialService.subscribe(this.form.value);
       this.storageService.setItem(storageKeysEnum.CUSTOMER_INFO, JSON.stringify(result));
       this.router.navigate(['app/home']);

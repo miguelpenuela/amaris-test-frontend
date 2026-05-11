@@ -28,7 +28,7 @@ export class History implements OnInit {
     if (value) {
       const registration:Registration = JSON.parse(value);
       const result = await this.financialService.getRegistrationMovements(registration.id);
-      console.log('getRegistrationHistory.result: ', result);
+      // console.log('getRegistrationHistory.result: ', result);
       this.registration.update(() => result);
     }
   }

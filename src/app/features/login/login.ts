@@ -25,15 +25,11 @@ export class Login {
       username: ['felipegarxon@hotmail.com', [Validators.required, Validators.email]],
       password: ['miclave123', [Validators.required]],
     });
-
-    this.form.valueChanges.subscribe((value) => {
-      console.log('value changes: ', value);
-    })
   }
 
   async login() {
     const result = await this.authServices.login(this.form.value);
-    console.log('Login.result: ', result);
+    // console.log('Login.result: ', result);
     this.router.navigate(['/app/home']);
   }
 }

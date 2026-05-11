@@ -19,7 +19,7 @@ export class ProductCard {
   private storageService = inject(Storage);
 
   investProduct() {
-    console.log('investProduct.product: ', this.product);
+    // console.log('investProduct.product: ', this.product);
     this.storageService.setItem(storageKeysEnum.SELECTED_PRODUCT, JSON.stringify(this.product));
     this.router.navigate(['app/subscribe']);
   }

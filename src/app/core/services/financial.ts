@@ -16,7 +16,7 @@ export class Financial {
       try {
         const url = `${environment.basePath}/financial/investment-founds`;
         const result = await lastValueFrom(this.httpService.getRequest(url));
-        console.log('getProductList.result: ', result);
+        // console.log('getProductList.result: ', result);
         resolve(result);
       } catch (error) {
         console.log('getProductList.error: ', error);
@@ -30,7 +30,7 @@ export class Financial {
       try {
         const url = `${environment.basePath}/financial/products/${customer_id}`;
         const result = await lastValueFrom(this.httpService.getRequest(url));
-        console.log('getCustomerSubscriptions.result: ', result);
+        // console.log('getCustomerSubscriptions.result: ', result);
         resolve(result);
       } catch (error) {
         console.log('getCustomerSubscriptions.error: ', error);
@@ -44,7 +44,7 @@ export class Financial {
       try {
         const url = `${environment.basePath}/financial/movements/${registration_id}`;
         const result = await lastValueFrom(this.httpService.getRequest(url));
-        console.log('getRegistrationMovements.result: ', result);
+        // console.log('getRegistrationMovements.result: ', result);
         resolve(result);
       } catch (error) {
         console.log('getRegistrationMovements.error: ', error);
@@ -58,7 +58,7 @@ export class Financial {
       try {
         const url = `${environment.basePath}/financial/subscribe`;
         const result = await lastValueFrom(this.httpService.postRequest(url, body));
-        console.log('subscribe.result: ', result);
+        // console.log('subscribe.result: ', result);
         resolve(result);
       } catch (error) {
         console.log('subscribe.error: ', error);
@@ -72,7 +72,7 @@ export class Financial {
       try {
         const url = `${environment.basePath}/financial/cancel-subscription`;
         const result = await lastValueFrom(this.httpService.postRequest(url, {id}));
-        console.log('cancelSubscription.result: ', result);
+        // console.log('cancelSubscription.result: ', result);
         resolve(result);
       } catch (error) {
         console.log('cancelSubscription.error: ', error);

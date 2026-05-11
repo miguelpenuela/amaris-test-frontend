@@ -20,7 +20,7 @@ export class Authentication {
       try {
         const url = `${environment.basePath}/authentication/register`;
         const result: any = await lastValueFrom(this.httpService.postRequest(url, body));
-        console.log('register.result: ', result);
+        // console.log('register.result: ', result);
         resolve(result);
       } catch (error) {
         console.log('register.error: ', error);
@@ -34,7 +34,7 @@ export class Authentication {
       try {
         const url = `${environment.basePath}/authentication/login`;
         const result: any = await lastValueFrom(this.httpService.postRequest(url, body));
-        console.log('login.result: ', result);
+        // console.log('login.result: ', result);
         this.storageService.setItem(storageKeysEnum.CUSTOMER_INFO, JSON.stringify(result.customer_info));
         this.storageService.setItem(storageKeysEnum.USER_INFO, JSON.stringify(result.user));
         this.storageService.setItem(storageKeysEnum.ACTIVE_SESSION, 'true');
