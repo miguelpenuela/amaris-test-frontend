@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "btg-frontend": {
+    "amaris-test-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -67,10 +67,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "btg-frontend:build:production"
+              "buildTarget": "amaris-test-frontend:build:production"
             },
             "development": {
-              "buildTarget": "btg-frontend:build:development"
+              "buildTarget": "amaris-test-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
