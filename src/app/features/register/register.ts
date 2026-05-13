@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { Authentication } from '../../core/services/authentication';
+import { ICreateCustomer } from '../../core/interfaces/request/CreateCustomer.interface';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class Register {
   form: FormGroup;
   formBuilder: FormBuilder = inject(FormBuilder);
 
-  authenticationService: Authentication = inject(Authentication);
+  authServices: Authentication = inject(Authentication);
+  router: Router = inject(Router);
 
   constructor() {
     this.form = this.formBuilder.group({
@@ -26,22 +28,44 @@ export class Register {
       surname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.requiredTrue]],
-      acceptTerms: ['', [Validators.requiredTrue]]
+      confirmPassword: [false, [Validators.requiredTrue]],
+      acceptTerms: [false, [Validators.requiredTrue]]
     });
 
-    this.form.valueChanges.subscribe((values) => {
-      console.log('errors: ', this.form.errors);
-    })
-
+    this.form.valueChanges.subscribe((values) => console.log("form: ", values))
   }
 
-  validateConfirmPassword() {
-
+  validateConfirmPassword(event: any) {
+    console.log('validateConfirmPassword:', event.target.value);
+    const password = this.form.get('password')?.value;
+    const confirmPasswordValue =  event.target.value;
+    this.form.get('confirmPassword')?.setValue(password === confirmPasswordValue);
   }
 
-  createAccount() {
+  async createAccount() {
+    console.log('createAccount...');
+    try {
+      const body = await this.buildBody();
+      await this.authServices.register(body);
+      await this.authServices.login({username: body.customer.email, password:body.password});
+      this.router.navigate(['/app/home']);
+    } catch (error) {
+      console.log('createAccount.error: ', error); 
+    }
+  }
 
+  buildBody(): ICreateCustomer {
+    const {name, surname, email, password } = this.form.value;
+    const body: ICreateCustomer = {
+      customer: {
+        city_id: 167,
+        name,
+        email,
+        surname
+      },
+      password 
+    }
+    return body;
   }
 
 }

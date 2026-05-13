@@ -38,18 +38,13 @@
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-at"></i></span>
                             <input type="text" class="form-control" placeholder="felpegarxon@mail.com" formControlName="email">
                         </div>
-                        @if (form.errors && form.get('email')?.hasError('required')) {
-                            <div class="error-field">
-                                <p>El campo es obligatorio</p>
-                            </div>
-                        }
                     </div>
 
                     <div class="form-field">
                         <label>Password</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-                            <input type="text" class="form-control" placeholder="**********" formControlName="password">
+                            <input type="password" class="form-control" placeholder="**********" formControlName="password">
                         </div>
                     </div>
 
@@ -57,7 +52,8 @@
                         <label>Confirm Password</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-shield"></i></span>
-                            <input type="text" class="form-control" placeholder="**********" formControlName="confirmPassword">
+                            <input type="password" class="form-control" placeholder="**********" 
+                            (input)="validateConfirmPassword($event)"/>
                         </div>
                     </div>
 
