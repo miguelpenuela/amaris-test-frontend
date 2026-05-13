@@ -31,8 +31,6 @@ export class Register {
       confirmPassword: [false, [Validators.requiredTrue]],
       acceptTerms: [false, [Validators.requiredTrue]]
     });
-
-    this.form.valueChanges.subscribe((values) => console.log("form: ", values))
   }
 
   validateConfirmPassword(event: any) {
