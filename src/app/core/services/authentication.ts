@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { ICreateCustomer } from '../interfaces/request/CreateCustomer.interface';
 import { HttpService } from './http-service';
 import { ILogin } from '../interfaces/request/Login.interface';
@@ -14,6 +14,20 @@ export class Authentication {
   
   private httpService: HttpService = inject(HttpService);
   private storageService: Storage = inject(Storage);
+
+  accessToken = signal<string | null>(null);
+
+  setToken(token: string) {
+    this.accessToken.set(token);
+  }
+
+  getToken(): string | null {
+    return this.accessToken();
+  }
+
+  logout() {
+    this.accessToken.set(null)
+  }
 
   register(body: ICreateCustomer): Promise<any> {
     return new Promise(async (resolve, reject) => {
@@ -38,6 +52,7 @@ export class Authentication {
         this.storageService.setItem(storageKeysEnum.CUSTOMER_INFO, JSON.stringify(result.customer_info));
         this.storageService.setItem(storageKeysEnum.USER_INFO, JSON.stringify(result.user));
         this.storageService.setItem(storageKeysEnum.ACTIVE_SESSION, 'true');
+        this.setToken(result.access_token);
         resolve(result);
       } catch (error) {
         console.log('login.error: ', error);

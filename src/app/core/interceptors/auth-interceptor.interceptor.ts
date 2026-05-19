@@ -1,9 +1,19 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { Authentication } from '../services/authentication';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const authApiKey = "app-api-key-value";
-  const authRequest = req.clone({
-    headers: req.headers.set('x-api-key', authApiKey),
+
+  const authenticationService = inject(Authentication);
+  
+  const token = authenticationService.getToken();
+
+  if (!token) {
+    return next(req);
+  }
+
+  const cloned = req.clone({
+    headers: req.headers.set('access-token', token)
   });
-  return next(authRequest);
+  return next(cloned);
 };
