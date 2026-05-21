@@ -18,11 +18,11 @@ export class Authentication {
   accessToken = signal<string | null>(null);
 
   setToken(token: string) {
-    this.accessToken.set(token);
+    this.storageService.setItem(storageKeysEnum.ACCESS_TOKEN, token);
   }
 
-  getToken(): string | null {
-    return this.accessToken();
+  getToken(): string | null | undefined {
+    return this.storageService.getItem(storageKeysEnum.ACCESS_TOKEN);
   }
 
   logout() {

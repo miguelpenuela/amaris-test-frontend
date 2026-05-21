@@ -5,4 +5,5 @@ export enum storageKeysEnum {
     USER_INFO = "userInfo",
     ACTIVE_SESSION = "activeSession",
     ERROR = "error",
+    ACCESS_TOKEN = "access-token",
 }
