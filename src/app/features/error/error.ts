@@ -3,6 +3,7 @@ import { Storage } from '../../core/services/storage';
 import { storageKeysEnum } from '../../core/utils/storageKeys';
 import { IError } from '../../core/interfaces/ux/Error.interface';
 import { Router } from '@angular/router';
+import { Authentication } from '../../core/services/authentication';
 
 @Component({
   selector: 'app-error',
@@ -16,6 +17,7 @@ export class Error implements OnInit {
 
   private storageService: Storage = inject(Storage);
   private router: Router = inject(Router);
+  private authenticationService: Authentication = inject(Authentication);
 
   ngOnInit(): void {
     this.getErrorDetails();
@@ -30,6 +32,7 @@ export class Error implements OnInit {
 
   confirm() {
     this.storageService.clearStorage();
+    this.authenticationService.logout();
     this.router.navigate(['/login']);
   }
 
